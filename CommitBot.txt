@@ -1,0 +1,25 @@
+#To isolate the environment from any other Python projects on the production/developtment system.
+virtualenv commitbot
+
+#Activate the environment.
+source commitbot/bin/activate
+
+#Install Slack client so the bot can communicate within a channel.
+pip install slackclient
+
+#SLACK APP GUI
+#Create App and Workspace that can receive commands from Slack API.
+#https://api.slack.com/apps?new_app_token=1
+#Will test on development workspace before deployed to production.
+
+#Add bot user. "Bot Users" > "Features" > "Add a Bot User", choose display name, choose username, "Add Bot User"
+
+#Slack bots use both RTM and Web APIs. The pip install slackclient command earlier allows the bot to authenticate once for both of these.
+
+#Install Slack App.
+#"Settings" > "Install App"
+#This should all be done through the Slack App GUI.
+#Authenticate as the bot through oauth token obtained earlier.
+
+#TERMINAL
+#Export secret token as env var (with permission) so it's saved as an environment variable.
