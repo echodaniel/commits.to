@@ -9,7 +9,7 @@ from slackclient import SlackClient
 # instantiate Slack client
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 # commitbot's user ID in Slack: value is assigned after the bot starts up
-starterbot_id = None
+commitbot_id = None
 
 # constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
@@ -29,7 +29,7 @@ def parse_bot_commands(slack_events):
     for event in slack_events:
         if event["type"] == "message" and not "subtype" in event:
             user_id, message = parse_direct_mention(event["text"])
-            if user_id == starterbot_id:
+            if user_id == commitbot_id:
                 return message, event["channel"]
     return None, None
 
