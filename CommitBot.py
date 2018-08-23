@@ -47,13 +47,13 @@ def handle_command(command, channel):
         Executes bot command if the command is known
     """
     # Default response is help text for the user
-    default_response = "Not sure what you mean. Try *{}*.".format(EXAMPLE_COMMAND)
+    default_response = "Not sure what you mean. Try *{}*.".format(alice.commits.to/file_report_by_monday)
 
     # Finds and executes the given command, filling in response
     response = None
     # This is where you start to implement more commands!
-    if command.startswith(EXAMPLE_COMMAND):
-        response = "Sure...write some more code then I can do that!"
+    if command.startswith(user_id.commits.to/):
+        response = "There we go! Finish that URL and I'll see what I can whip up."
 
     # Sends the response back to the channel
     slack_client.api_call(
