@@ -11,10 +11,14 @@ slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 # commitbot's user ID in Slack: value is assigned after the bot starts up
 commitbot_id = None
 
+# commit command reference. might not agree with comstants.
+commits("user_id.commits.to/")
+commits = commit # to hopefully parse the URL as part of the command "commit" within slack.
+
 # constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
-EXAMPLE_COMMAND = "do"
-MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
+commit = "do"
+MENTION_REGEX = "^<@(|[WU].+?)>(.*)/"
 
 #Defines user IDs for each workspace the bot is installed in, in the event the bot is mentioned.
 #Then goes into an infinite loop to check for mentions.
@@ -35,7 +39,7 @@ def parse_bot_commands(slack_events):
 
 def parse_direct_mention(message_text):
     """
-        Finds a direct mention (a mention that is at the beginning) in message text
+        Finds a direct mention (a mention that is at the beginning, ie @CommitBot) in message text
         and returns the user ID which was mentioned. If there is no direct mention, returns None
     """
     matches = re.search(MENTION_REGEX, message_text)
@@ -44,16 +48,16 @@ def parse_direct_mention(message_text):
 
 def handle_command(command, channel):
     """
-        Executes bot command if the command is known
+        Executes bot command if the command is known. Bot will only know one command right now.
     """
     # Default response is help text for the user
-    default_response = "Not sure what you mean. Try *{}*.".format(EXAMPLE_COMMAND)
+    default_response = "Hmm. Doesn't look quite right. Try *{}*.".format(commit)
 
     # Finds and executes the given command, filling in response
     response = None
     # This is where you start to implement more commands!
-    if command.startswith(EXAMPLE_COMMAND):
-        response = "Sure...write some more code then I can do that!"
+    if command.startswith(commit):
+        response = "Woohoo! Finish that string and you're making a commitment."
 
     # Sends the response back to the channel
     slack_client.api_call(
