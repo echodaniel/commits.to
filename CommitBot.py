@@ -13,12 +13,12 @@ commitbot_id = None
 
 # commit command reference. might not agree with comstants.
 commits("user_id.commits.to/")
-commits = commit # to hopefully parse the URL as part of the command "commit" within slack.
+commit = commits
 
 # constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
-commit = "do"
-MENTION_REGEX = "^<@(|[WU].+?)>(.*)/"
+commit = "iwill, commitsto"
+MENTION_REGEX = "/"
 
 #Defines user IDs for each workspace the bot is installed in, in the event the bot is mentioned.
 #Then goes into an infinite loop to check for mentions.
