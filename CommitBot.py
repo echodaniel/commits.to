@@ -11,9 +11,8 @@ slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 # commitbot's user ID in Slack: value is assigned after the bot starts up
 commitbot_id = None
 
-# commit command reference. might not agree with comstants.
-commits("user_id.commits.to/")
-commit = commits
+# commit command reference. might not agree with constants below.
+commitsto("user_id.commits.to/")
 
 # constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
